@@ -56,3 +56,12 @@ input{
   background-color: var(--secondary_color);
   margin-top: 0.8em;
 }
+
+.spreadAndRestOperator{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 50vh;
+  background-color: wheat;
+}
