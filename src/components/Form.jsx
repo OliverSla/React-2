@@ -26,8 +26,8 @@ const Form = () => {
       alert("Pole nesmie byť prázdne!");
     }
 
-    for( const i in oneUser ) {
-      oneUser[i] = '';
+    for (const i in oneUser) {
+      oneUser[i] = "";
     }
   };
 
@@ -49,7 +49,7 @@ const Form = () => {
             name="name"
           />
           <input
-            type="text"
+            type="email"
             placeholder="Email"
             onChange={inputChange}
             value={oneUser.email}
@@ -60,7 +60,7 @@ const Form = () => {
           </div>
         </form>
       </article>
-      <div className="result">
+      <div className="resultUsersData">
         <h2>Users from localStorage</h2>
 
         {users.length > 0 ? (
