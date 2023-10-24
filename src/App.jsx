@@ -1,13 +1,15 @@
 import Form from './components/Form'
 import LoremIpsunGenerator from './components/LoremIpsunGenerator';
+import Navbar from './components/Navbar';
 import UseRefHook from './components/UseRefHook';
 
 function App() {
   return (
     <>
-  <Form />
+  {/* <Form />
   <LoremIpsunGenerator />
-  <UseRefHook />
+  <UseRefHook /> */}
+  <Navbar />
     </>
   );
 }

@@ -7,11 +7,15 @@ const UseRefHook = () => {
   const formSubmit = (e) => {
     e.preventDefault();
 
-    inputRef.current.textContent = name;
-    inputRef.current.style.fontSize = "2em";
-    inputRef.current.style.color = "green";
-    inputRef.current.style.margin = "50px";
-    inputRef.current.style.textTransform = "uppercase";
+    if (name.length !== 0) {
+      inputRef.current.textContent = name;
+      inputRef.current.style.fontSize = "2em";
+      inputRef.current.style.color = "green";
+      inputRef.current.style.margin = "50px";
+      inputRef.current.style.textTransform = "uppercase";
+    } else {
+      return null;
+    }
 
     setName("");
   };
