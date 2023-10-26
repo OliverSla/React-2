@@ -236,3 +236,45 @@ a{
   }
 
 }
+
+
+
+
+/* Form With Notification */
+
+.formPadding{
+  height: 300px;
+  margin-top: 25px;
+}
+
+.result{
+  background-color: var(--black_background);
+  color: var(--primary_color);
+  padding: 0 0 25px 0;
+  flex-direction: column;
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.result h3{
+  margin-left: 8px;
+  font-weight: 300;
+  font-size: 1.5em;
+  padding: 4px 0px;
+}
+
+.oneFilm{
+  align-items: center;
+  display: flex;
+}
+
+.oneFilm p{
+  font-size: 0.7em;
+}
+
+.notification{
+  position: absolute;
+  margin-top: -30px;
+}

@@ -1,7 +1,8 @@
 import Form from './components/Form'
 import LoremIpsunGenerator from './components/LoremIpsunGenerator';
-import Navbar from './components/Navbar';
 import UseRefHook from './components/UseRefHook';
+import Navbar from './components/Navbar';
+import FormWithNotification from '../src/components/formWithNotification';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
   <LoremIpsunGenerator />
   <UseRefHook /> */}
   <Navbar />
+  <FormWithNotification />
     </>
   );
 }
