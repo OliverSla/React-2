@@ -3,6 +3,7 @@ import LoremIpsunGenerator from './components/LoremIpsunGenerator';
 import UseRefHook from './components/UseRefHook';
 import Navbar from './components/Navbar';
 import FormWithNotification from '../src/components/formWithNotification';
+import PrimaryComponent from './components/useContext/PrimaryComponent';
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
   <LoremIpsunGenerator />
   <UseRefHook /> */}
   <Navbar />
-  <FormWithNotification />
+  {/* <FormWithNotification /> */}
+  <PrimaryComponent />
     </>
   );
 }
