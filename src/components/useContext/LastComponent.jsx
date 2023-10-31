@@ -8,7 +8,7 @@ const LastComponent = () => {
   return (
     <>
     <div>V poslednej komponente sa vykreslia dáta poslané z hlavnej komponenty bez props drillingu..</div>
-    <div className='useContextDataResuld'>{myData.map((oneObject) => {
+    <div className='useContextDataResult'>{myData.map((oneObject) => {
         return(
             <p key={oneObject.id}>{oneObject.name}</p>
         )
