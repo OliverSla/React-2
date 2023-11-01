@@ -298,3 +298,23 @@ a {
   align-items: center;
   margin-top: 40px;
 }
+
+.oneBook{
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--black_background);
+  color: var(--primary_color);
+  padding: 2em;
+  flex-direction: column;
+}
+
+.oneBook h2{
+  font-size: 2em;
+}
+
+.oneBook p{
+  padding-top: 0.6em;
+  font-size: 0.8em;
+}

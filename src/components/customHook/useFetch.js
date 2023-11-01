@@ -3,20 +3,21 @@ import { useState, useEffect} from 'react'
 
 const useFetch = (url) => {
     const [loading, setLoading] = useState(true);
-    const [coordinates, setCoordinates] = useState({});
-  
-    const getCoordinates = async () => {
-      const response = await fetch(url);
-      const issCoordinates = await response.json();
-      setLoading(false);
-      setCoordinates(issCoordinates);
-    };
+    const [data, setData] = useState({});
   
     useEffect(() => {
-      getCoordinates();
+
+      const getData = async () => {
+        const response = await fetch(url);
+        const issCoordinates = await response.json();
+        setLoading(false);
+        setData(issCoordinates);
+      };
+
+      getData();
     }, [url])
 
-    return {coordinates, loading}
+    return {data, loading}
 
 }
 
