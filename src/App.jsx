@@ -13,9 +13,9 @@ function App() {
   {/* <Form />
   <LoremIpsunGenerator />
   <UseRefHook /> 
-  <Navbar />
+  <Navbar />*/}
   <FormWithNotification />
-  <PrimaryComponent /> */}
+  <PrimaryComponent />
   <Coordinates />
   <Books />
 

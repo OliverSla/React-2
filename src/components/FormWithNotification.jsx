@@ -5,38 +5,37 @@ import { v4 as uuidv4 } from "uuid";
 
 const FormWithNotification = () => {
   const reducer = (state, action) => {
-    if (action.type === "ADD_MOVIE") {
-      const newFilms = [...state.movies, action.payload];
-      console.log(state.movies);
-      console.log(newFilms);
-      return {
-        ...state,
-        movies: newFilms,
-        showNotification: true,
-        notification: "Film bol pridaný",
-      };
-    } else if (action.type === "NO_VALUE") {
-      console.log(state.movies);
-      return {
-        ...state,
-        showNotification: true,
-        notification: "Pole nesmie byť prázdne",
-      };
-    } else if (action.type === "CLOSE_NOTIFICATION") {
-      return {
-        ...state,
-        showNotification: false,
-      };
-    } else if( action.type === "DELETE_MOVIE") {
-      return (
-        {
+    switch (action.type) {
+      case "ADD_MOVIE":
+        const newFilms = [...state.movies, action.payload];
+        return {
           ...state,
-          movies: action.payload,
-        }
-      )
+          movies: newFilms,
+          showNotification: true,
+          notification: "Film bol pridaný",
+        };
+      case "NO_VALUE":
+        return {
+          ...state,
+          showNotification: true,
+          notification: "Pole nesmie byť prázdne",
+        };
+      case "CLOSE_NOTIFICATION":
+        return {
+          ...state,
+          showNotification: false,
+        };
+      case "DELETE_MOVIE":
+        const filteredMovies = state.movies.filter(
+          (movie) => movie.id !== action.payload
+        );
+        return {
+          ...state,
+          movies: filteredMovies,
+        };
+      default:
+        return state;
     }
-
-    console.log("Nenašiel sa action.type");
   };
 
   const defaultState = {
@@ -46,6 +45,7 @@ const FormWithNotification = () => {
   };
 
   const [movieName, setMovieName] = useState("");
+  const [filterValue, setFilterValue] = useState("");
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   const submitHandler = (e) => {
@@ -67,14 +67,24 @@ const FormWithNotification = () => {
     setMovieName(e.target.value);
   };
 
-  const clodeNotification = () => {
+  const closeNotification = () => {
     dispatch({ type: "CLOSE_NOTIFICATION" });
   };
 
   const deleteObject = (movieID) => {
-    const newMovies = state.movies.filter((movie) => movieID !== movie.id)
-    dispatch({type: "DELETE_MOVIE", payload: newMovies})
-  }
+    dispatch({ type: "DELETE_MOVIE", payload: movieID });
+  };
+
+  const filterHandler = (e) => {
+    setFilterValue(e.target.value);
+  };
+
+  // Filtrované filmy sú odvodené priamo pri vykreslení
+  const filteredMovies = filterValue
+    ? state.movies.filter((movie) =>
+        movie.name.toLowerCase().includes(filterValue.toLowerCase())
+      )
+    : state.movies;
 
   return (
     <>
@@ -83,7 +93,7 @@ const FormWithNotification = () => {
           {state.showNotification && (
             <Modal
               notification={state.notification}
-              clodeNotification={clodeNotification}
+              closeNotification={closeNotification}
             />
           )}
           <input
@@ -92,14 +102,20 @@ const FormWithNotification = () => {
             onChange={inputHandler}
             value={movieName}
           />
+          <input
+            type="text"
+            placeholder="Filtrovať"
+            onChange={filterHandler}
+            value={filterValue}
+          />
           <input type="submit" value="Odoslať" />
         </form>
       </div>
       <div className="result">
-        {state.movies.map((movie, index) => {
+        {filteredMovies.map((movie, index) => {
           return (
-            <div key={index} className="oneFilm">
-              <p>{index + 1}</p> <h3>{movie.name}</h3> <button onClick={() => deleteObject(movie.id)}> Zmazať </button>
+            <div key={movie.id} className="oneFilm">
+              <p>{index + 1}</p> <h3>{movie.name}</h3> <button onClick={() => deleteObject(movie.id)}>Zmazať</button>
             </div>
           );
         })}
